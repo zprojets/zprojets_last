@@ -1,2 +1,4 @@
 symfony/app/config/parameters.ini
 nbproject
+symfony/app/cache/*
+symfony/app/logs/*
