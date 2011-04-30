@@ -1,0 +1,35 @@
+{% block title "Inscription" ~ name %}
+
+{% block content %}
+    <h1>Inscription sur zProjets</h1><br /><br />
+<p align="center">Cette page vous permet de créer un compte membre sur zProjets.<br />
+A l'issue de votre inscription, vous devrez valider votre compte. Un mail vous sera alors envoyé et vous devrez suivre les instructions contenues dans ce dernier.<br />
+Si 24H après votre inscription votre compte n'est pas validé, il sera alors automatiquement détruit.</p><br /><br />
+<form method="post" action="./users-2.html">
+    <fieldset>
+            <legend>Informations de compte</legend>
+                    <label for="pseudo">Pseudo</label>
+                    <input type="text" name="pseudo" id="pseudo" /><br /><br />
+
+                    <label for="password">Mot de passe</label>
+                    <input type="password" name="password" id="password" /><br />
+                    <label for="conf_pass">Confirmez</label>
+                    <input type="password" name="conf_pass" id="conf_pass" /><br /><br />
+
+                    <label for="mail">E-mail</label>
+                    <input type="text" name="mail" id="mail" /><br />
+                    <label for="conf_mail">Confirmez</label>
+                    <input type="text" name="conf_mail" id="conf_mail" /><br /><br />
+
+                    <label for="reglement">J'ai lu et accepté le <a href="regles.html">règlement du site</a></label>
+                    <input type="checkbox" name="reglement" id="reglement" /><br /><br />
+    </fieldset>
+    <fieldset>
+        <legend>Anti-spam</legend>
+        Veuillez recopier les deux mots dans le champ prévu à cet effet.<br />
+        Ceci n'est pas un jeu, cette simple vérification nous permet d'éviter qu'un robot ne s'inscrive sur le site.<br /><br />
+        {$recaptcha_html}<br />
+    </fieldset>
+    <div align="center"><input type="submit" value="Terminer mon inscription" name="form" /></div>
+</form>
+{% endblock %}
