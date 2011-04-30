@@ -1,3 +1,0 @@
-register:
-    pattern:   /inscription.html
-    defaults:  { _controller: BundleUsers:register }
