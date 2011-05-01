@@ -15,8 +15,25 @@ class UserController extends Controller
      * @extra:Route("/inscription.html", name="_user_register")
      * @extra:Template()
      */
-    public function registerAction()
-    {
-        return $this->render('ApplicationUserBundle:User:register.html.twig');
+    public function registerAction(){
+         $form = $this->get('form.factory')
+            ->createBuilder('form')
+            ->add('Pseudo', 'text')
+            ->add('Mot de passe', 'password')
+            ->add('Confirmation du mot de passe', 'password')
+            ->add('Adresse e-mail', 'text')
+            ->add('Confirmation de l\'adresse e-mail', 'text')
+            ->add('Regles', 'checkbox')
+            ->getForm();
+
+        return array('form' => $form->createView(),);
+    }
+    
+    /**
+     * @extra:Route("/users-2.html", name="_user_register_sucess")
+     * @extra:Template()
+     */
+    public function register_successAction(){
+    
     }
 }
