@@ -1,13 +1,109 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
+        <meta name='google-site-verification' content='pdyOxFwA9TXBqStYdkHhjF5a5uyqMlo4IP2eyorq-j8' />
+        <meta name='author' content='Clotaire, Florian, Minipipo1, the_little, Torgi' />
+
         <title>{% block title %}Page inconnue{% endblock %} - zProjets</title>
+
+        <link rel='stylesheet' href='{{ asset('bundles/theme/css/style.css') }}' type='text/css' media='all' />
         {% block stylesheets %}{% endblock %}
-        <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
+        <link rel='shortcut icon' href='{{ asset('bundles/theme/images/favicon.png') }}' />
     </head>
     <body>
-        {% block body %}{% endblock %}
+        <header id='top'>
+             <div id='logo'>
+                <a href='/'>
+                    <img src='{{ asset('bundles/theme/images/new_logo.png') }}' alt='zProjets, vos projets à portee de tous !' title='Retour à l'accueil'/>
+                </a>
+            </div>
+            <nav>
+                <ul id='speedbarre'>
+                        <li class='menu_projet'><a href='projets.html'></a></li>
+                        <li class='menu_recrutement'><a href='recrutement.html'></a></li>
+                        <li class='menu_forum'><a href='forum.html'></a></li>
+                        <li class='menu_admin'><a href='admin.html'></a></li>
+                </ul>
+            </nav>		
+            <div id='informations'>
+                <form action='users-4.html' method='post' name='connexion'>
+                    <div id='cadre_connexion'>
+                        <input type='checkbox' name='auto' /> <b>Connexion auto</b><br />
+                        <br />
+                        <a href='users-9.html'>- J'ai oublie mon mot de passe</a><br />
+                        <a href='users-8.html'>- Renvoyer le mail de confirmation</a>
+                    </div>
+                    <div id='left'>
+                        <input type='text' name='username' id='username' value='Pseudonyme' class='input' tabindex='1' /> <br />
+                        <input type='password' name='password' id='password' value='Mot de passe' class='input' tabindex='2' />
+                    </div>
+                    <div id='right'>
+                        <div class='plus'>+</div>
+                        <a href='' class='connect' onclick=''>Connexion</a>
+                        <input type='submit' value='none' id='submit_connect' />
+                        <a href='users-1.html' class='register'>Inscription</a>
+                    </div>
+                 </form>
+            </div>
+        </header>
+        <section id='page'>
+            <div class='fil'>
+                <a href='/'>zProjets</a>
+            </div>
+            <div id='clear'></div>
+            <div id='menu_gauche'>
+                <div class='menu'>
+                    <img src='{{ asset('bundles/theme/images/icons_menu/home.png') }}' class='title_img' alt='Icone'/>
+                    <div class='title'>Menu</div>
+                    <div class='contenu'>
+                        <table class='table_menu'>
+                            <tr>
+                                    <td><a href='news.html'>News</a></td>
+                            </tr>
+                            <tr>
+                                <td><a href='livre-or.html'>Livre d'or</a></td>
+                            </tr>
+                            <tr>
+                                <td><a href='bug.html'>Bug Tracker</a></td>
+                            </tr>
+                            <tr>
+                                <td><a href='equipe.html' >L'equipe</a></td>
+                            </tr>
+                            <tr>
+                                <td><a href='liste-membres.html'>Membres</a></td>
+                            </tr>
+                            <tr>
+                                <td style='border: none'><a href='dons.html' title='Faire un don'>Dons</a></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div id='corps'>
+                <div id='contenu_corps'>
+                {% block body %}{% endblock %}
+                </div>
+            </div>
+        </section>
+        <div class='clear_page'></div>
+        <footer id='zNav'>
+            <div class='left'>
+            </div>
+            <div class='right'>
+            </div>
+        </footer>
+        <footer id='zNav-hide'>
+                <div><img src='{{ asset('bundles/theme/images/znav/hide.png') }}' alt='Cacher' /></div>
+        </footer>
+        <footer id='zNav-show'>
+                <div><img src='{{ asset('bundles/theme/images/znav/show.png') }}' alt='Montrer' /></div>
+        </footer>
+        <div id='footer'>
+            <div class='text_footer'>
+                Copyright 2011 - Tous droits reserves<br />
+            </div>
+        </div>
         {% block javascripts %}{% endblock %}
     </body>
 </html>

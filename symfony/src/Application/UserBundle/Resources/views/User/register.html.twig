@@ -1,11 +1,41 @@
-    <h1>Inscription sur zProjets</h1><br /><br />
+{% extends "::base.html.twig" %}
+
+{% block title %}Inscription{% endblock %}
+{% block body %}
+ <h1>Inscription sur zProjets</h1><br /><br />
 <p align="center">Cette page vous permet de créer un compte membre sur zProjets.<br />
 A l'issue de votre inscription, vous devrez valider votre compte. Un mail vous sera alors envoyé et vous devrez suivre les instructions contenues dans ce dernier.<br />
 Si 24H après votre inscription votre compte n'est pas validé, il sera alors automatiquement détruit.</p><br /><br />
 <form action="{{ path('_user_register') }}" method="post" {{ form_enctype(form) }}>
     <fieldset>
             <legend>Informations de compte</legend>
-                    {{ form_widget(form) }}
+                    {{ form_errors(form) }}
+
+                        {{ form_label(form.pseudo, 'Votre pseudonyme :') }}
+                        {{ form_errors(form.pseudo) }}
+                        {{ form_widget(form.pseudo) }}<br /><br />
+
+                        {{ form_label(form.password, 'Votre mot de passe :') }}
+                        {{ form_errors(form.password) }}
+                        {{ form_widget(form.password) }}<br />
+
+                        {{ form_label(form.conf_password, 'Confirmez votre mot de passe :') }}
+                        {{ form_errors(form.conf_password) }}
+                        {{ form_widget(form.conf_password) }}<br /><br />
+
+                        {{ form_label(form.email, 'Votre adresse e-mail :') }}
+                        {{ form_errors(form.email) }}
+                        {{ form_widget(form.email) }}<br />
+
+                        {{ form_label(form.conf_email, 'Confirmez adresse e-mail :') }}
+                        {{ form_errors(form.conf_email) }}
+                        {{ form_widget(form.conf_email) }}<br /><br />
+
+                        {{ form_label(form.rules, "J'ai lu et accepté les régles :") }}
+                        {{ form_errors(form.rules) }}
+                        {{ form_widget(form.rules) }}<br />
+
+                    {{ form_rest(form) }}
     </fieldset>
     <fieldset>
         <legend>Anti-spam</legend>
@@ -15,3 +45,4 @@ Si 24H après votre inscription votre compte n'est pas validé, il sera alors au
     </fieldset>
     <div align="center"><input type="submit" value="Terminer mon inscription" name="form" /></div>
 </form>
+{% endblock %}  

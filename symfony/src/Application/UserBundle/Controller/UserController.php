@@ -18,12 +18,12 @@ class UserController extends Controller
     public function registerAction(){
          $form = $this->get('form.factory')
             ->createBuilder('form')
-            ->add('Pseudo', 'text')
-            ->add('Mot de passe', 'password')
-            ->add('Confirmation du mot de passe', 'password')
-            ->add('Adresse e-mail', 'text')
-            ->add('Confirmation de l\'adresse e-mail', 'text')
-            ->add('Regles', 'checkbox')
+            ->add('pseudo', 'text')
+            ->add('password', 'password')
+            ->add('conf_password', 'password')
+            ->add('email', 'text')
+            ->add('conf_email', 'text')
+            ->add('rules', 'checkbox')
             ->getForm();
 
         return array('form' => $form->createView(),);
