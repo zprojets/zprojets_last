@@ -1,0 +1,19 @@
+Application\UserBundle\User:
+    properties:
+        pseudo:
+            - NotBlank: ~
+            - MinLength: 3
+        password:
+            - NotBlank: ~
+            - MinLength: 5
+        conf_password:
+            - NotBlank: ~
+            - MinLength: 5
+        email:
+            - NotBlank: ~
+            - MinLength: 5
+        conf_email:
+            - NotBlank: ~
+            - MinLength: 5
+        rule:
+            - NotBlank: ~

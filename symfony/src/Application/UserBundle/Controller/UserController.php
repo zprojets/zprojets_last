@@ -3,6 +3,8 @@
 namespace Application\UserBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Response;
+use Application\UserBundle\ApplicationUserBundle as ApplicationUserBundle;
 
 class UserController extends Controller
 {
@@ -25,7 +27,15 @@ class UserController extends Controller
             ->add('conf_email', 'text')
             ->add('rules', 'checkbox')
             ->getForm();
+         
+        $users = new ApplicationUserBundle();
+        $validator = $container->get('validator');
+        $errorList = $validator->validate($users);
 
+        if (count($errorList) > 0) {
+            return new Response(print_r($errorList, true));
+        } 
+         
         return array('form' => $form->createView(),);
     }
     
