@@ -32,6 +32,28 @@ class UserController extends Controller
             ->add('rules', 'checkbox')
             ->getForm();
         
+        $request = $this->get('request');
+        if ($request->getMethod() == 'POST') {
+            $form->bindRequest($request);
+
+            if ($form->isValid()) {
+                // perform some action, such as save the object to the database
+                return new Response('The author is valid! Yes!');
+                //return $this->redirect($this->generateUrl('_user_register_success'));
+            } else {
+                return new Response('The author is not valid! Oh no!');
+            }
+        } else 
+            return array('form' => $form->createView());
+                               
+    }
+    
+    /**
+     * @extra:Route("/membres-2.html", name="_user_register_success")
+     * @extra:Template()
+     */
+    public function register_successAction(){
+    
         $validator = $this->get('validator');
         $errorList = $validator->validate($user);
         
@@ -39,15 +61,6 @@ class UserController extends Controller
             return array('form' => $form->createView(),);            
         else 
             return new Response('The author is valid! Yes!');
-                       
-    }
-    
-    /**
-     * @extra:Route("/users-2.html", name="_user_register_sucess")
-     * @extra:Template()
-     */
-    public function register_successAction(){
-    
     }
     
     /**
