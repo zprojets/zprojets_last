@@ -2,11 +2,8 @@
 
 namespace Application\UserBundle\Entity;
 
-/**
- * @orm:Entity
- */
-class User{
-    
+
+class Register{
     /**
      * @orm:Id
      * @orm:Column(type="integer")
@@ -18,5 +15,15 @@ class User{
      * @orm:Column(type="string", length="30")
      */
     protected $pseudo;
+    
+    /**
+     * @orm:Column(type="string", length="255")
+     */
+    protected $password;
+    
+    /**
+     * @orm:Column(type="string", length="255")
+     */
+    protected $conf_password;
 }
 ?>

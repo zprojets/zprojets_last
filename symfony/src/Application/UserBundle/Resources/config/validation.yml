@@ -17,3 +17,6 @@ Application\UserBundle\User:
             - MinLength: 5
         rule:
             - NotBlank: ~
+    getters:
+        isSamePassword:
+            - AssertFalse: {message: "Les mots de passe ne correspondent pas"}

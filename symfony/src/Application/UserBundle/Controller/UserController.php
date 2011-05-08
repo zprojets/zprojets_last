@@ -4,7 +4,8 @@ namespace Application\UserBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
-use Application\UserBundle\ApplicationUserBundle as ApplicationUserBundle;
+use Application\UserBundle\Entity\Register;
+use Application\UserBundle\Form\Register as FormRegister;
 
 class UserController extends Controller
 {
@@ -18,7 +19,10 @@ class UserController extends Controller
      * @extra:Template()
      */
     public function registerAction(){
-         $form = $this->get('form.factory')
+        
+        $user = new Register();
+        
+        $form = $this->get('form.factory')
             ->createBuilder('form')
             ->add('pseudo', 'text')
             ->add('password', 'password')
@@ -27,16 +31,15 @@ class UserController extends Controller
             ->add('conf_email', 'text')
             ->add('rules', 'checkbox')
             ->getForm();
-         
-        $users = new ApplicationUserBundle();
-        $validator = $container->get('validator');
-        $errorList = $validator->validate($users);
-
-        if (count($errorList) > 0) {
-            return new Response(print_r($errorList, true));
-        } 
-         
-        return array('form' => $form->createView(),);
+        
+        $validator = $this->get('validator');
+        $errorList = $validator->validate($user);
+        
+        if (count($errorList) > 0) 
+            return array('form' => $form->createView(),);            
+        else 
+            return new Response('The author is valid! Yes!');
+                       
     }
     
     /**
@@ -45,5 +48,13 @@ class UserController extends Controller
      */
     public function register_successAction(){
     
+    }
+    
+    /**
+     * @extra:Route("/membre-6-{id}.html", name="_user_register_sucess")
+     * @extra:Template()
+     */
+    public function profilAction($id){
+        return array('id' => $id);
     }
 }
